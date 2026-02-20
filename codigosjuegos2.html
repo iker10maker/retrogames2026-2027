@@ -1,0 +1,401 @@
+<!DOCTYPE html><html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RetroForge Games • Colección 2026</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" /> 
+  <style>
+    :root {
+      --bg: #0a0e17;
+      --card: #111827;
+      --accent: #00f2ff;
+      --accent-dark: #00b7cc;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --border: #1e293b;
+      --error: #f87171;
+    }
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+h1 {
+  font-size: 2.8rem;
+  background: linear-gradient(90deg, #00f2ff, #a855f7, #ec4899);
+  background-clip: var(--text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle { color: var(--muted); font-size: 1.2rem; }
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.8rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.game-card {
+  background: var(--card);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: all 0.35s ease;
+  position: relative;
+}
+
+.game-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent);
+  box-shadow: 0 20px 40px rgba(0,242,255,0.18);
+}
+
+.cover {
+  height: 160px;
+  background: linear-gradient(135deg, #1e293b, #111827);
+  display: grid;
+  place-items: center;
+  font-size: 3.5rem;
+  color: rgba(0,242,255,0.12);
+}
+
+.info {
+  padding: 1.5rem;
+}
+
+.title {
+  font-size: 1.45rem;
+  margin-bottom: 0.6rem;
+  color: white;
+}
+
+.desc {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.2rem;
+  min-height: 50px;
+}
+
+.size { 
+  display: block;
+  color: var(--accent);
+  font-size: 0.9rem;
+  margin: 0.8rem 0;
+}
+
+.btn-download {
+  width: 100%;
+  padding: 1rem;
+  background: var(--accent);
+  color: #0a0e17;
+  border: none;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  transition: all 0.3s;
+}
+
+.btn-download:hover {
+  background: var(--accent-dark);
+  transform: scale(1.03);
+}
+
+.password-row {
+  margin-top: 1.2rem;
+  display: none;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.password-row.active { display: flex; }
+
+input[type="password"] {
+  width: 100%;
+  padding: 0.9rem;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.btn-verify {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 0.9rem;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-verify:hover { background: #059669; }
+
+.error-msg {
+  color: var(--error);
+  font-size: 0.9rem;
+  text-align: center;
+  min-height: 1.3rem;
+}
+
+footer {
+  text-align: center;
+  margin-top: 5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 2.2rem; }
+  .games-grid { grid-template-columns: 1fr; }
+}  </style></head>
+<body>
+<a href="http://www.juegoselcaballerito.com"></a>
+  <header>
+    <h1>RetroForge Collection 2026</h1>
+    <p class="subtitle">10 títulos seleccionados • Cada descarga protegida por contraseña</p>
+  </header>
+
+  <div class="games-grid">
+
+<!-- 1 -->
+<div class="game-card">
+  <div class="cover"><i class="fas fa-gamepad"></i></div>
+  <div class="info">
+    <h3 class="title">Super meat boy</h3>
+    <p class="desc">diviertete</p>
+    <span class="size">de nada</span>
+    <button class="btn-download" onclick="showPassword(this)">
+      <i class="fas fa-download"></i> Descargar
+    </button>
+    <div class="password-row" data-link="https://www.mediafire.com/file/zsaptvd4ckvbzt7?dkey=zsaptvd4ckvbzt7">
+      <input type="password" class="pass-input" placeholder="Contraseña..." />
+      <button class="btn-verify" onclick="checkAndDownload(this)">Verificar y descargar</button>
+      <div class="error-msg"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 2 -->
+<div class="game-card">
+  <div class="cover"><i class="fas fa-dragon"></i></div>
+  <div class="info">
+    <h3 class="title">cuphead con dlc</h3>
+    <p class="desc">divertete</p>
+    <span class="size">de nada</span>
+    <button class="btn-download" onclick="showPassword(this)">
+      <i class="fas fa-download"></i> Descargar
+    </button>
+    <div class="password-row" data-link="https://www.mediafire.com/file/25q5p4sg5wx6cic/Cuphead_%25282%2529.rar/file">
+      <input type="password" class="pass-input" placeholder="Contraseña..." />
+      <button class="btn-verify" onclick="checkAndDownload(this)">Verificar y descargar</button>
+      <div class="error-msg"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 3 -->
+<div class="game-card">
+  <div class="cover"><i class="fas fa-dove"></i></div>
+  <div class="info">
+    <h3 class="title">people playground</h3>
+    <p class="desc">creditos al youtuber thefenix010</p>
+    <span class="size">de nada</span>
+    <button class="btn-download" onclick="showPassword(this)">
+      <i class="fas fa-download"></i> Descargar
+    </button>
+    <div class="password-row" data-link="https://www.mediafire.com/file/ksr2qnygwwvjdlj/People_Playground_%255B1.27.5%255D_-_TheFenix010.rar/file">
+      <input type="password" class="pass-input" placeholder="Contraseña..." />
+      <button class="btn-verify" onclick="checkAndDownload(this)">Verificar y descargar</button>
+      <div class="error-msg"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="game-card">
+  <div class="cover"><i class="fas fa-skull-crossbones"></i></div>
+  <div class="info">
+    <h3 class="title">bendy and de dark revival</h3>
+    <p class="desc">diviertete</p>
+    <span class="size">de nada</span>
+    <button class="btn-download" onclick="showPassword(this)">
+      <i class="fas fa-download"></i> Descargar
+    </button>
+    <div class="password-row" data-link="https://drive.google.com/file/d/1zdz2CUjMR8UdwIwlpd5JnIzXSqD7zX6U/view?pli=1">
+      <input type="password" class="pass-input" placeholder="Contraseña..." />
+      <button class="btn-verify" onclick="checkAndDownload(this)">Verificar y descargar</button>
+      <div class="error-msg"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 5 -->
+<div class="game-card">
+  <div class="cover"><i class="fas fa-star"></i></div>
+  <div class="info">
+    <h3 class="title">hytale</h3>
+    <p class="desc">divertete</p>
+    <span class="size">de nada</span>
+    <button class="btn-download" onclick="showPassword(this)">
+      <i class="fas fa-download"></i> Descargar
+    </button>
+    <div class="password-row" data-link="https://www.mediafire.com/file/uia15yuqplwfmzx/Hytale_17.01.rar/file">
+      <input type="password" class="pass-input" placeholder="Contraseña..." />
+      <button class="btn-verify" onclick="checkAndDownload(this)">Verificar y descargar</button>
+      <div class="error-msg"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 6 -->
+<div class="game-card">
+  <div class="cover"><i class="fas fa-rocket"></i></div>
+  <div class="info">
+    <h3 class="title">Celeste</h3>
+    <p class="desc">creditos al youtuber thefenix010, y ahi estan muchos juegos en su canal</p>
+    <span class="size">de nada y apoyenlo</span>
+    <button class="btn-download" onclick="showPassword(this)">
+      <i class="fas fa-download"></i> Descargar
+    </button>
+    <div class="password-row" data-link="https://www.mediafire.com/file/okv2solbyccggmu/Celeste_-_TheFenix010.rar/file">
+      <input type="password" class="pass-input" placeholder="Contraseña..." />
+      <button class="btn-verify" onclick="checkAndDownload(this)">Verificar y descargar</button>
+      <div class="error-msg"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 7 -->
+<div class="game-card">
+  <div class="cover"><i class="fas fa-chess"></i></div>
+  <div class="info">
+    <h3 class="title">hollow knight</h3>
+    <p class="desc">creditos al youtuber thefenix010, y ahi estan muchos juegos en su canal</p>
+    <span class="size">de nada y apoyenlo :3</span>
+    <button class="btn-download" onclick="showPassword(this)">
+      <i class="fas fa-download"></i> Descargar
+    </button>
+    <div class="password-row" data-link="https://www.mediafire.com/file/8gb10974578vi2t/HK+-+TheFenix010.rar/file">
+      <input type="password" class="pass-input" placeholder="Contraseña..." />
+      <button class="btn-verify" onclick="checkAndDownload(this)">Verificar y descargar</button>
+      <div class="error-msg"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 8 -->
+<div class="game-card">
+  <div class="cover"><i class="fas fa-meteor"></i></div>
+  <div class="info">
+    <h3 class="title">hollow knight silksong</h3>
+    <p class="desc">creditos al youtuber thefenix010, y ahi estan muchos juegos en su canal</p>
+    <span class="size">de nada y apoyenlo</span>
+    <button class="btn-download" onclick="showPassword(this)">
+      <i class="fas fa-download"></i> Descargar
+    </button>
+    <div class="password-row" data-link="https://www.mediafire.com/file/1itouhazvyt8b6l/HKSS+-+TheFenix010.rar/file">
+      <input type="password" class="pass-input" placeholder="Contraseña..." />
+      <button class="btn-verify" onclick="checkAndDownload(this)">Verificar y descargar</button>
+      <div class="error-msg"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 9 -->
+<div class="game-card">
+  <div class="cover"><i class="fas fa-car"></i></div>
+  <div class="info">
+    <h3 class="title">nine souls</h3>
+    <p class="desc">creditos al youtuber thefenix010, y ahi estan muchos juegos en su canal</p>
+    <span class="size">de nada y apoyenlo</span>
+    <button class="btn-download" onclick="showPassword(this)">
+      <i class="fas fa-download"></i> Descargar
+    </button>
+    <div class="password-row" data-link="https://www.mediafire.com/file/tkah976k0gg757j/NS+-+TheFenix010.rar/file">
+      <input type="password" class="pass-input" placeholder="Contraseña..." />
+      <button class="btn-verify" onclick="checkAndDownload(this)">Verificar y descargar</button>
+      <div class="error-msg"></div>
+    </div>
+  </div>
+</div>
+
+<!-- 10 -->
+<div class="game-card">
+  <div class="cover"><i class="fas fa-dungeon"></i></div>
+  <div class="info">
+    <h3 class="title">dead cells</h3>
+    <p class="desc">creditos al youtuber thefenix010, y ahi estan muchos juegos en su canal</p>
+    <span class="size">de nada y apoyenlo</span>
+    <button class="btn-download" onclick="showPassword(this)">
+      <i class="fas fa-download"></i> Descargar
+    </button>
+    <div class="password-row" data-link="https://www.mediafire.com/file/mmzm6wkj28zxnwi/DeadC+-+TheFenix010.rar/file">
+      <input type="password" class="pass-input" placeholder="Contraseña..." />
+      <button class="btn-verify" onclick="checkAndDownload(this)">Verificar y descargar</button>
+      <div class="error-msg"></div>
+    </div>
+  </div>
+</div>  </div>
+
+  <footer>
+    <p>© 2026 RetroForge • Acceso protegido • Usa enlaces reales al publicar</p>
+  </footer>
+
+  <script>
+    const MASTER_PASSWORD = "retro2026";  // ← CAMBIA ESTA CONTRASEÑA AQUÍ
+
+    function showPassword(btn) {
+      const card = btn.closest('.game-card');
+      const passwordRow = card.querySelector('.password-row');
+      passwordRow.classList.add('active');
+      passwordRow.querySelector('.pass-input').focus();
+      btn.style.display = 'none';
+    }
+
+    function checkAndDownload(verifyBtn) {
+      const row = verifyBtn.closest('.password-row');
+      const input = row.querySelector('.pass-input').value.trim();
+      const error = row.querySelector('.error-msg');
+      const link = row.getAttribute('data-link');
+
+      if (input === MASTER_PASSWORD) {
+        error.textContent = "";
+        window.open(link, '_blank');
+        setTimeout(() => {
+          row.classList.remove('active');
+          row.closest('.info').querySelector('.btn-download').style.display = 'flex';
+          row.querySelector('.pass-input').value = "";
+        }, 5000);
+      } else {
+        error.textContent = "Contraseña incorrecta";
+        row.querySelector('.pass-input').value = "";
+        row.querySelector('.pass-input').focus();
+      }
+    }
+  </script>
+
+</body>
+</html>
+
